@@ -1,0 +1,12 @@
+Type: IPython Notebook Extension
+Name: Jupyter Black
+Description: Use Black to reformat/prettify Python code cells
+Link: README.md
+Main: jupyter-black.js
+Compatibility: Jupyter (4.x) 
+Parameters:
+- name: code_format_hotkey 
+  description: Hotkey to call the code prettify
+  input_type: hotkey
+  default: 'Ctrl-L'
+
