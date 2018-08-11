@@ -1,6 +1,8 @@
 # Jupyter Black [Black formatter for Jupyter Notebook]
 
-This extension reformats/prettifies code in a notebook's code cell. 
+This extension reformats/prettifies code in a notebook's code cell by [black](https://black.readthedocs.io/en/stable/). 
+
+![demo](demo.gif)
 
 **pre-requisites:** of course, you must have some of the corresponding packages installed:
 
