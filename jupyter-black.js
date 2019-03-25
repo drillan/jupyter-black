@@ -79,7 +79,7 @@ define(function (require, exports, module) {
             var text = selected_cell.get_text();
             text = JSON.stringify(text)
                 .replace(/([^\\])\\\\\\n/g, "$1");
-            var code_input = 'black.format_str(' + text + ', 88)';
+            var code_input = 'black.format_str(' + text + ', mode=black.FileMode(line_length=88))';
             exec_code(code_input, index)
         }
     }
