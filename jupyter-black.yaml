@@ -5,8 +5,67 @@ Link: README.md
 Main: jupyter-black.js
 Compatibility: Jupyter 4.x, 5.x
 Parameters:
-- name: code_format_hotkey 
-  description: Hotkey to call the code prettify
-  input_type: hotkey
-  default: 'Ctrl-L'
+- name: jupyter-black.add_toolbar_button
+  description: Add a toolbar button to prettify the selected cell(s)
+  input_type: checkbox
+  default: true
 
+- name: jupyter-black.button_icon
+  description: |
+    Toolbar button icon: a font-awesome class defining the icon used for the
+    toolbar button and actions.
+    See https://fontawesome.com/icons for available icons.
+  input_type: text
+  default: 'fa-legal'
+
+- name: jupyter-black.button_label
+  description: Toolbar button label text
+  input_type: text
+  default: 'Black'
+
+- name: jupyter-black.register_hotkey
+  description: |
+    Register hotkeys to prettify the selected code cell(s), or all code cells
+    in the notebook
+  input_type: checkbox
+  default: true
+
+- name: jupyter-black.hotkeys.process_selected
+  description: Hotkey to use to prettify the selected cell(s)
+  input_type: hotkey
+  default: 'Ctrl-B'
+
+- name: jupyter-black.hotkeys.process_all
+  description: Hotkey to use to prettify the whole notebook
+  input_type: hotkey
+  default: 'Ctrl-Shift-B'
+
+- name: jupyter-black.show_alerts_for_not_supported_kernel
+  description: Show alerts if the kernel is not supported
+  input_type: checkbox
+  default: false
+
+- name: jupyter-black.show_alerts_for_errors
+  description: Show alerts for errors in the kernel prettifying calls
+  input_type: checkbox
+  default: true
+
+- name: jupyter-black.kernel_config_map_json
+  description: |
+    json defining library calls required to load the kernel-specific
+    prettifying modules, and the prefix & postfix for the json-format string
+    required to make the prettifying call.
+  input_type: textarea
+  default: |
+    {
+      "python": {
+        "library": "import json\ndef black_reformat(cell_text):\n    import black\n    import re\n    cell_text = re.sub('^%', '#%#', cell_text, flags=re.M)\n    reformated_text = black.format_str(cell_text, mode=black.FileMode())\n    return re.sub('^#%#', '%', reformated_text, flags=re.M)",
+        "prefix": "print(json.dumps(black_reformat(u",
+        "postfix": ")))"
+      },
+      "javascript": {
+        "library": "jsbeautify = require('js-beautify')",
+        "prefix": "console.log(JSON.stringify(jsbeautify.js_beautify(",
+        "postfix": ")));"
+      }
+    }
