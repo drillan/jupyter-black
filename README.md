@@ -13,7 +13,8 @@ pip install black [--user]
 Then the extension provides
 
 - a toolbar button
-- a keyboard shortcut for reformatting the current code-cell (default: Ctrl-L)
+- a keyboard shortcut for reformatting the current code-cell (default: Ctrl-B)
+- a keyboard shortcut for reformatting whole code-cells (default: Ctrl-Shift-B)
 
 Syntax shall be correct. The extension will also point basic syntax errors. 
 
