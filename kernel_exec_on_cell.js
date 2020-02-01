@@ -1,4 +1,6 @@
+// Copyright (c) Jupyter-Contrib Team.
 // Distributed under the terms of the Modified BSD License.
+// Copyright (c) 2019, driller
 
 define([
     'jquery',
