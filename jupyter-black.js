@@ -24,7 +24,9 @@ define(['./kernel_exec_on_cell'], function(kernel_exec_on_cell) {
             "    import black",
             "    import re",
             "    cell_text = re.sub('^%', '#%#', cell_text, flags=re.M)",
+            "    cell_text = re.sub('^!', '#!#', cell_text, flags=re.M)",
             "    reformated_text = black.format_str(cell_text, mode=black.FileMode())",
+            "    reformated_text = re.sub('^#!#', '!', reformated_text, flags=re.M)",
             "    return re.sub('^#%#', '%', reformated_text, flags=re.M)"].join("\n"),
             "prefix": "print(json.dumps(black_reformat(u",
             "postfix": ")))"
